@@ -2,14 +2,9 @@
 # -*- coding: utf-8 -*-
 
 """
-ZetCode PyQt5 tutorial
-
-This program creates a menubar. The
-menubar has one menu with an exit action.
-
-Author: Jan Bodnar
-Website: zetcode.com
-Last edited: January 2017
+Mumtaz Cem Eris
+150130129
+11/10/2018
 """
 
 import sys
@@ -62,8 +57,14 @@ class MainWindow(QMainWindow):
 
     def open_input(self):
         print('Opening Input...')
-        # do the stuff
-        #sys.exit(app.exec_())
+        input_image = QLabel(self)
+        input_pixmap = QPixmap('color1.png')
+        input_pixmap.height()
+        input_image.setPixmap(input_pixmap)
+        input_image.setGeometry(320 - input_pixmap.width() / 2
+                                , 60, input_pixmap.height(),
+                                input_pixmap.width())
+        input_image.show()
 
     def open_target(self):
         print('Opening Target...')
@@ -78,15 +79,12 @@ class MainWindow(QMainWindow):
 
 
 class GroupBox(QGroupBox):
-    # IT SHOULD BE QGROUPBOX
     def __init__(self, parent):
         super(GroupBox, self).__init__(parent)
 
         self.init_groupbox()
 
     def init_groupbox(self):
-
-        #gbox = QGroupBox(self)
 
         left = QGroupBox(self)
         left.setTitle('Input')
@@ -101,9 +99,6 @@ class GroupBox(QGroupBox):
         right.setGeometry(1280, 30, 550, 1150)
 
 
-        """leftimg = QLabel(self)
-        leftpixmap = QPixmap('color1.png')
-        leftimg.setPixmap(leftpixmap)"""
 
 
 
