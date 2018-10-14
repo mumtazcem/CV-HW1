@@ -113,8 +113,50 @@ class MainWindow(QMainWindow):
 
     def open_target(self):
         print('Opening Target...')
-        # do the stuff
-        #sys.exit(app.exec_())
+        input_image = QLabel(self)
+        input_pixmap = QPixmap('color1.png')
+        input_pixmap.height()
+        input_image.setPixmap(input_pixmap)
+        input_image.setGeometry(780, 60, input_pixmap.height(),
+                                input_pixmap.width())
+
+        img_file = Image.open("color1.png").convert('RGB')
+        img = img_file.load()
+        [xs, ys] = img_file.size
+        freq_r = {}
+        freq_g = {}
+        freq_b = {}
+        for x in range(0, xs):
+            for y in range(0, ys):
+                [r, g, b] = img[x, y]
+                freq_r[r] = freq_r.get(r, 0) + 1
+                freq_g[g] = freq_g.get(g, 0) + 1
+                freq_b[b] = freq_b.get(b, 0) + 1
+
+        keylist = list(range(0, 256))
+        yaxis_r = list(range(0, 256))
+        yaxis_g = list(range(0, 256))
+        yaxis_b = list(range(0, 256))
+        for key in keylist:
+            yaxis_r[key] = freq_r[key]
+            yaxis_g[key] = freq_g[key]
+            yaxis_b[key] = freq_b[key]
+
+        fig = plt.figure()
+        axis1 = fig.add_subplot(311)
+        axis2 = fig.add_subplot(312)
+        axis3 = fig.add_subplot(313)
+        axis1.bar(keylist, yaxis_r, color="red")
+        axis2.bar(keylist, yaxis_g, color="green")
+        axis3.bar(keylist, yaxis_b, color="blue")
+        fig.savefig('target_plots.png', dpi=83)
+
+        input_imager = QLabel(self)
+        input_pixmapr = QPixmap('target_plots.png')
+        input_imager.setPixmap(input_pixmapr)
+        input_imager.setGeometry(650, 350, input_pixmapr.width(), input_pixmapr.height())
+        input_image.show()
+        input_imager.show()
 
     def button(self):
         btn = QPushButton("Equalize Histogram", self)
