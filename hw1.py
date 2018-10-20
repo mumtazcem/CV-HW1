@@ -9,18 +9,10 @@ Mumtaz Cem Eris
 
 import sys
 
-import null as null
-from PyQt5.QtCore import Qt, QCoreApplication
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 import matplotlib.pyplot as plt
-import numpy as np
-import colorsys
 from PIL import Image
-from matplotlib import pyplot
-from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
-from matplotlib.backends.backend_qt4agg import NavigationToolbar2QT as NavigationToolbar
-from matplotlib.figure import Figure
 
 
 class MainWindow(QMainWindow):
